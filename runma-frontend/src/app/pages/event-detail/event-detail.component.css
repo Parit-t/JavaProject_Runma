@@ -1,0 +1,97 @@
+.odd > .left {
+  background-color: rgb(246, 165, 73);
+  color: rgb(25, 68, 68);
+}
+
+.odd > .right {
+  color: rgb(25, 68, 68);
+}
+
+.even > .left {
+  background-color: rgb(25, 68, 68);
+  color: rgb(246, 165, 73);
+}
+
+.even > .right {
+  color: rgb(25, 68, 68);
+}
+
+.btn {
+  color: white;
+  background: rgb(255, 97, 35);
+}
+
+@media screen and (max-width: 768px) {
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+  .md\:mt-2 {
+    margin-top: 1rem;
+  }
+  .md\:ml-5 {
+    margin-left: 1.25rem;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .race-info {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    justify-items: center;
+  }
+
+  .race-info > button {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  button {
+    height: 60px;
+    padding-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 646px) {
+  .flex-auto.w-6.text-center.py-4.right {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 522px) {
+  .open-close-regis {
+    font-size: 0.8rem;
+  }
+}
+
+button {
+  max-width: 300px;
+  width: auto; /* This will allow the button to shrink if necessary */
+}
+
+/* Media query for screens with a maximum width of 640px */
+@media (max-width: 768px) {
+  button {
+    width: 100%; /* Set the button width to 100% */
+    max-width: none; /* Remove the max-width limit */
+    margin: 0 auto;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+  .md:mt-2 {
+    margin-top: 1rem;
+  }
+  .md:ml-5 {
+    margin-left: 1.25rem;
+  }
+  .btn {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+}

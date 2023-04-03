@@ -1,0 +1,143 @@
+.searchBoxUpper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+    width: 1080px;
+    height:80px;
+   background-color: #FA9533;
+    /* font-family: Roboto; */
+   border-radius: 10px;
+}
+.searchBox-box1{
+  display: flex;
+  flex-direction: column;
+  /* flex-direction: row; */
+  /* align-items: center; */
+  /* text-align: center; */
+  width: 260px;
+  height:80px;
+  /* background-color: red; */
+}
+
+#eventnamelabel{
+  width: 230px;
+  height: 20px;
+  margin-left: 15px;
+  margin-top: 10px;
+  font-family: Roboto;
+  /* color: white; */
+  font-size: important50 px;
+
+  /* color: #FA9533; */
+  color: #27295D;
+  /* color:#FFFFFF; */
+  /* color:#1F272D; */
+  /* color: brown;
+  background-color: red; */
+}
+#eventname{
+  width: 230px;
+  height:40px;
+  margin-left: 15px;
+  margin-top: -10px;
+  padding: 5px;
+}
+.searchBox-box2{
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  height:80px;
+
+}
+#provincelabel{
+  font-size: medium;
+  color: #27295D;
+  width: 230px;
+  height: 20px;
+  margin-left: 15px;
+  margin-top: 10px;
+
+}
+#province{
+  width: 230px;
+  height:40px;
+  margin-left: 15px;
+  margin-top: -10px;
+  padding: 5px;
+}
+
+
+
+.searchBox-box3{
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+
+  height:80px;
+}
+
+#distancelabel{
+  color: #27295D;
+  width: 230px;
+  height: 20px;
+  margin-left: 15px;
+  margin-top: 10px;
+
+}
+
+
+#distance{
+  width: 230px;
+  height:30px;
+  margin-left: 15px;
+  margin-top: 7px;
+  /* padding: 2.5px; */
+}
+
+
+
+
+.searchBox-box4{
+  display: flex;
+
+  align-items: center;
+  width: 260px;
+
+  height:80px;
+}
+
+#searchbutton{
+  /* width: 100px;
+  height:40px; */
+  margin-right: 10px;
+  width: 50px;
+  transform: rotate(-270deg);
+  border-radius: 5px;
+  height: 60px;
+}
+#clearsearchbutton{
+  width: 120px;
+  height:40px;
+
+}
+
+#searchbutton{
+  background-color: #27295D;
+  color: white;
+  border-radius: 10px;
+  /* border-color: white; */
+  font-size: 20px;
+  border:none;
+
+  
+}
+
+#clearsearchbutton{
+  background-color: #27295D;
+  color: white;
+  border-radius: 10px;
+  /* border-color: white; */
+  border:none;
+  font-size: 16px;
+
+}

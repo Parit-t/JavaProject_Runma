@@ -1,0 +1,94 @@
+.content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 767px) {
+
+    .card-container>*:not(.circle-link),
+    .terminal {
+        width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+        height: 16px;
+        margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+        margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+        right: 120px;
+        transform: rotate(-5deg);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+.location-info {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+    align-items: center;
+}
+
+.event-location-info{
+    display: flex;
+    
+}
+
+.ticket-sales-box {
+    display: flex;
+    padding-top: 50px; 
+    padding-bottom: 50px;    
+    border-radius: 0.5rem; 
+  }
+  
+ 
+  
+  .race-title{
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #FA9533;
+    margin-bottom: -10px;
+  }
+
+  .back{
+    background-color: #f07731;
+    color: white;
+    font-weight: normal;
+    font-size: 17px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 31px;
+    padding-right: 31px;
+    margin-right: 5px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .back:hover{
+    background-color: rgb(194 65 12);
+    color: white;
+    font-weight: normal;
+    font-size: 17px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 31px;
+    padding-right: 31px;
+    margin-right: 5px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }

@@ -1,0 +1,125 @@
+<div class="container content border-neutral-500 ">
+    <p class="text-2xl text-center font-bold">Event table</p>
+    <div class="flex flex-col m-5">
+        <div class="overflow-x-auto sm:-mx-3 lg:-mx-5">
+            <div class="inline-block min-w-full py-2 sm:px-0 lg:px-2">
+                <div class="overflow-hidden">
+
+                    <table class="min-w-full text-left text-sm font-light border-black">
+                        <thead thead class="border-black font-medium dark:border-neutral-500 bg-[#FA9533]">
+                            <tr class="border-b dark:border-neutral-500 border-black">
+                                <th scope="col" class="px-2 py-4 text-center">id</th>
+                                <th scope="col" class="px-2 py-4 text-center">Name</th>
+                                <th scope="col" class="px-2 py-4 text-center">Capacity</th>
+                                <th scope="col" class="px-2 py-4 text-center">Location</th>
+                                <th scope="col" class="px-2 py-4 text-center">Province</th>
+                                <th scope="col" class="px-2 py-4 text-center">outOfTicketFlag</th>
+                                <th scope="col" class="px-2 py-4 text-center">OpenRegisDate</th>
+                                <th scope="col" class="px-2 py-4 text-center">CoseRegisDate</th>
+                                <th scope="col" class="px-2 py-4 text-center">RaceTypeList</th>
+                                <th scope="col" class="px-2 py-4 text-center">OrganizerList</th>
+                                <th scope="col" class="px-2 py-4 text-center"></th>
+                                <th scope="col" class="px-2 py-4 text-center"></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let event of events">
+                                <td class="whitespace-nowrap px-2 py-4 text-center font-medium">{{event.id}}</td>
+                                <td class="whitespace-nowrap px-2 py-4 text-center font-medium">{{event.name}}</td>
+                                <td class="whitespace-nowrap px-2 py-4 text-center font-medium">{{event.capacity}}</td>
+                                <td class="whitespace-nowrap px-2 py-4 text-center font-medium">{{event.location}}</td>
+                                <td class="whitespace-nowrap px-2 py-4 text-center font-medium">{{event.province}}</td>
+                                <td class="whitespace-nowrap px-2 py-4 text-center font-medium">
+                                    {{event.outOfTicketFlag}}</td>
+                                <td class="whitespace-nowrap px-2 py-4 text-center font-medium">{{event.openRegisDate}}
+                                </td>
+                                <td class="whitespace-nowrap px-2 py-4 text-center font-medium">{{event.closeRegisDate}}
+                                </td>
+                                <td class="whitespace-nowrap px-2 py-4 text-center font-medium"><button type="button" class="btn btn-danger"
+                                        (click)="openDetails(content,event)"> View more </button></td>
+                                <td class="whitespace-nowrap px-2 py-4 text-center font-medium"><button type="button"
+                                        class="btn btn-danger" (click)="openDetails(contentOrg,event)"> View more
+                                    </button></td>
+                                <td class="whitespace-nowrap px-2 py-4 text-center font-medium"><button type="button"
+                                        class="btn btn-danger"
+                                        (click) = "toEdit(event.id)"> Edit </button>
+                                </td>
+                                <td class="whitespace-nowrap px-2 py-4 text-center font-medium"><button type="button"
+                                        class="btn btn-danger"
+                                        (click) = "toSale(event.id)"> Sell </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <header class="text-center" style="font-size: 2em; font-weight: bold;">RaceTypeList </header>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body rounded">
+        <table class="min-w-full text-left text-sm font-light">
+            <thead thead class="border-b font-medium dark:border-neutral-500 bg-[#FA9533]">
+                <tr>
+                    <th>name</th>
+                    <th>distance</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let raceType of objectEvent.raceTypeList">
+                    <td>{{ raceType.name }}</td>
+                    <td>{{raceType.distance}}</td>
+                    <td>{{raceType.price}}</td>
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</ng-template>
+<ng-template #contentOrg let-modal>
+    <div class="modal-header">
+        <header class="text-center" style="font-size: 2em; font-weight: bold;">OrganizerList </header>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body rounded">
+        <table class="min-w-full text-left text-sm font-light">
+            <thead thead class="border-b font-medium dark:border-neutral-500 bg-[#FA9533]">
+                <tr>
+                    <th>name</th>
+                    <th>contact</th>
+                    <th>website</th>
+                    <th>facebook</th>
+                    <th>email</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let Organizer of objectEvent.organizerList">
+                    <td>{{ Organizer.name }}</td>
+                    <td>{{Organizer.contact}}</td>
+                    <td>{{Organizer.website}}</td>
+                    <td>{{Organizer.facebook}}</td>
+                    <td>{{Organizer.email}}</td>
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</ng-template>

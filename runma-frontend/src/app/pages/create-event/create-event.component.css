@@ -1,0 +1,32 @@
+.rightside {
+  background-color: #eee2cb;
+  background-image: url("../../../assets/img/runner.png");
+  background-size: 100%;
+  /* background-position: fit; */
+  background-repeat: no-repeat;
+  /* background-position: center; */
+}
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: #232946 !important;
+  border-color: white;
+}
+
+.btn-primary:hover {
+  background-color: #df5a0d !important;
+  border-color: white;
+}
+
+.btn-secondary,
+.btn-secondary:active,
+.btn-secondary:visited {
+  background-color: #f8e3d6 !important;
+  border-color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #e9d0c1 !important;
+  border-color: white;
+}

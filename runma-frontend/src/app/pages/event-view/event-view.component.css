@@ -1,0 +1,18 @@
+.btn-danger,
+.btn-danger:visited,
+.btn-danger:active{
+        /*formatting goes here*/
+    animation-name: clicked;
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    font-weight: bold;
+        }
+
+.btn-danger:hover {
+  background-color: lightorange;
+  transform: scale(1.1);
+}

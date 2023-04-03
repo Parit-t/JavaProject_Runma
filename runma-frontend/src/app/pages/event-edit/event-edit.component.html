@@ -1,0 +1,316 @@
+<div class="Editor px-20 py-[20px] mb-[30px] flex justify-center">
+    <form [formGroup]="eventForm">
+        <!-- Event Detail -->
+        <div class = "eventDetail
+                    shadow
+                    mb-2.5">
+        <div class = "Header
+                    flex items-center
+                    bg-[#232946] h-[50px] w-full">
+        <span class="ml-3 font-medium text-2xl text-white">Event Detail</span>
+        </div>
+        <div class = "Event grid grid-cols-6 gap-2.5 px-3 pt-3 pb-4">
+            <div class = "flex flex-col col-span-3 mb-0.5">
+                    <label  class = "label">Name</label>
+                    <input  type = "text" 
+                            formControlName = "name"
+                            class="textInput">
+                <div class="text-xs text-danger" role="alert">
+                    {{
+                    eventForm.get("name")?.touched &&
+                    eventForm.get("name")?.hasError("required")
+                        ? "Event name is required"
+                        : ""
+                    }}
+                </div>
+            </div>
+            <div class = "flex flex-col col-span-1 mb-0.5">
+                <label  class = "label">Race Date</label>
+                <input  type = "date"
+                        formControlName = "raceDate"
+                        class="textInput">
+                <div class="text-xs text-danger" role="alert">
+                    {{
+                    eventForm.get("raceDate")?.touched &&
+                    eventForm.get("raceDate")?.hasError("required")
+                        ? "Date is required"
+                        : ""
+                    }}
+                </div>        
+            </div>
+            <div class = "flex flex-col col-span-1 mb-0.5">
+                <label  class = "label">Register Open</label>
+                <input  type = "date" 
+                        formControlName = "openRegisDate"
+                        class="textInput">
+                <div class="text-xs text-danger" role="alert">
+                    {{
+                    eventForm.get("openRegisDate")?.touched &&
+                    eventForm.get("openRegisDate")?.hasError("required")
+                        ? "Date is require"
+                        : ""
+                    }}
+                </div>
+            </div>
+            <div class = "flex flex-col col-span-1 mb-0.5">
+                <label  class = "label">Register Close</label>
+                <input  type = "date" 
+                        formControlName = "closeRegisDate"
+                        class="textInput">
+                <div class="text-xs text-danger" role="alert">
+                    {{
+                    eventForm.get("closeRegisDate")?.touched &&
+                    eventForm.get("closeRegisDate")?.hasError("required")
+                        ? "Date is require"
+                        : ""
+                    }}
+                </div>
+            </div>
+            <div class = "flex flex-col col-span-1 mb-0.5">
+                <label  class = "label">Province</label>
+                <input  type = "text" 
+                        formControlName = "province"
+                        class="textInput">
+                <div class="text-xs text-danger" role="alert">
+                    {{
+                    eventForm.get("province")?.touched &&
+                    eventForm.get("province")?.hasError("required")
+                        ? "Province is require"
+                        : ""
+                    }}
+                    {{
+                        eventForm.get("province")?.touched &&
+                        eventForm.get("province")?.hasError("pattern")
+                            ? "Province should be letter"
+                            : ""
+                        }}
+                </div>
+            </div>
+            <div class = "flex flex-col col-span-5 mb-0.5">
+                <label  class = "label">Location</label>
+                <input  type = "text" 
+                        formControlName = "location"
+                        class="textInput">
+                <div class="text-xs text-danger" role="alert">
+                    {{
+                    eventForm.get("location")?.touched &&
+                    eventForm.get("location")?.hasError("required")
+                        ? "Location is require"
+                        : ""
+                    }}
+                </div>
+            </div>
+            <div class = "flex flex-col col-span-3 mb-0.5">
+                <label  class = "label">Capacity</label>
+                <input  type = "text" 
+                        formControlName = "capacity"
+                        class="textInput">
+                <div class="text-xs text-danger" role="alert">
+                    {{
+                    eventForm.get("capacity")?.touched &&
+                    eventForm.get("capacity")?.hasError("required")
+                        ? "Capacity is require"
+                        : ""
+                    }}
+                    {{
+                        eventForm.get("capacity")?.touched &&
+                        eventForm.get("capacity")?.hasError("pattern")
+                            ? "capacity should be number"
+                            : ""
+                        }}
+                </div>
+            </div>
+            <div class = "flex flex-col col-span-3 mb-0.5">
+                <label  class = "label">Open For Sale</label>
+                <select formControlName = "outOfTicketFlag"
+                        class="textInput">
+                    <option [ngValue]=true>Yes</option>
+                    <option [ngValue]=false>No</option>
+                </select>
+                <div class="text-xs text-danger" role="alert">
+                    {{
+                    eventForm.get("outOfTicketFlag")?.hasError("required")
+                        ? "Ticket Status is require"
+                        : ""
+                    }}
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- Race Type -->
+        <div class = "eventDetail
+                    shadow
+                    mb-2.5">
+        <div class = "flex items-center
+                    bg-[#232946] h-[50px] w-full">
+            <span class="ml-3 font-medium text-2xl text-white">Availble Race</span>
+            <div class="flex-grow"></div>
+            <button type = "button"
+                    (click)="addRaceTypeListControl()"
+                    class = "addButton"
+            >Add
+            </button>
+            <button type = "button"
+                    (click)="clearRaceTypeListControl()"
+                    class = "clearButton"
+            >Clear
+            </button>
+        </div>
+        <div class="RaceType px-3 pt-3 pb-3">
+            <div class="grid grid-cols-3 gap-3">
+                <ng-container formArrayName="raceTypeList">
+                    <div *ngFor="let raceType of raceTypeListForm.controls; index as i"
+                    class="col-span-1 bg-gray-100 px-3 pt-2 pb-[10px] rounded-lg">
+                        <ng-container [formGroupName]="i">
+                            <div class="flex flex-col mt-1 mb-2.5">
+                                <label class = "label">Race name</label>
+                                <input  formControlName="name"
+                                        type = "text" 
+                                        class="textInput">
+                                <div class="text-xs text-danger" role="alert">
+                                    {{
+                                    raceType.get("name")?.hasError("required")
+                                        ? "Name is require"
+                                        : ""
+                                    }}
+                                </div>
+                            </div>
+                            <div class="flex flex-col mt-[10px] mb-2.5">
+                                <label class = "label">Distance (Km)</label>
+                                <input  formControlName="distance" 
+                                        type = "text" 
+                                        class="textInput">
+                                <div class="text-xs text-danger" role="alert">
+                                            {{
+                                            raceType.get("distance")?.hasError("required")
+                                                ? "Distance is require"
+                                                : ""
+                                            }}
+                                            {{
+                                                raceType.get("distance")?.hasError("pattern")
+                                                    ? "Distance should be number"
+                                                    : ""
+                                                }}
+                                </div>
+                            </div>
+                            <div class="flex flex-col mt-[10px] mb-2.5">
+                                <label class = "label">Price</label>
+                                <input  formControlName="price" 
+                                        type = "text" 
+                                        class="textInput">  
+                                <div class="text-xs text-danger" role="alert">
+                                            {{
+                                            raceType.get("price")?.hasError("required")
+                                                ? "Price is require"
+                                                : ""
+                                            }}
+                                            {{
+                                                raceType.get("price")?.hasError("pattern")
+                                                    ? "Price should be number"
+                                                    : ""
+                                                }}
+                                </div>                        
+                            </div>
+                            <div class = "mt-[10px] w-full flex justify-end">
+                                <button type = "button"
+                                (click)="deleteRaceTypeListControl(i)"
+                                class = "deleteButton"
+                                >Delete
+                                </button>
+                            </div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+              </div>
+        </div>
+        </div>
+        <!-- Organizer -->
+        <div class = "eventDetail
+        shadow
+        mb-3">
+        <div class = "flex items-center
+                    bg-[#232946] h-[50px] w-full">
+            <span class="ml-3 font-medium text-2xl text-white">Event's Organizer</span>
+            <div class="flex-grow"></div>
+            <button type="button"
+                    (click) = "addOrganizerListControl()"
+                    class = "addButton"
+            > Add 
+            </button>
+            <button type = "button"
+                    (click) = "clearOrganizerListControl()"
+                    class = "clearButton"
+            >Clear
+            </button>
+        </div>
+        <div class="Organizer px-3 pt-3 pb-3">
+            <div class="grid grid-cols-3 gap-3">
+                <ng-container formArrayName="organizerList">
+                <div *ngFor="let org of organizerListForm?.controls; index as j"
+                class="col-span-1 bg-gray-100 px-3 pt-2 pb-[4px] rounded-lg" >
+                    <ng-container [formGroupName]="j">
+                    <div class="mt-1 mb-2.5">
+                        <div class="flex flex-col">
+                            <label class = "label">Organizer</label>
+                            <select formControlName="id"
+                                    (change)="onOrgChange($event, j)"
+                                    class="textInput">
+                                    <option *ngFor="let newOrg of existOrganizer" [value] = newOrg.id>{{newOrg.name}}</option>
+                            </select>
+                            <div class="text-xs text-danger" role="alert">
+                                {{
+                                org.get("id")?.hasError("required")
+                                    ? "Name is require"
+                                    : ""
+                                }}
+                            </div>  
+                        </div>
+                        <div class = "mt-[10px] mb-2.5">
+                            <div class = "label">Contact</div>
+                            <div class = "textInputLock">{{org.value.contact}}</div>
+                        </div>
+                        <div class = "mt-[10px] mb-2.5">
+                            <div class = "label">Website</div>
+                            <div class = "textInputLock">{{org.value.website}}</div>
+                        </div>
+                        <div class = "mt-[10px] mb-2.5">
+                            <div class = "label">Facebook</div>
+                            <div class = "textInputLock">{{org.value.facebook}}</div>
+                        </div>
+                        <div class = "mt-[10px] mb-2.5">
+                            <div class = "label">Email</div>
+                            <div class = "textInputLock">{{org.value.email}}</div>
+                        </div>
+                        <div class = "mt-[10px] w-full flex justify-end">
+                            <button type = "button"
+                            (click)="deleteOrganizerListControl(j)"
+                            class = "deleteButton"
+                            >Delete
+                            </button>
+                        </div>
+                    </div>
+                    </ng-container>
+                </div >
+                </ng-container>
+            </div>
+        </div>
+        </div>
+        <!-- Submoit Footer -->
+        <div class = "shadow flex items-center justify-center items-center
+                    bg-[#232946] h-[50px]">
+            <div class = "inline-block py-[2.5px]">
+                <button type="button"
+                        (click) = "onSubmit()"
+                        class= "submit"
+                        [disabled]="eventForm.invalid"
+                >SUBMIT
+                </button>
+                <button type="button"
+                        (click) = "onCancel()"
+                        class= "back"
+                >BACK
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

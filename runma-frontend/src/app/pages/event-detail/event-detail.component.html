@@ -1,0 +1,75 @@
+<div>
+  <div *ngIf="event$ | async as event; else errorLoad">
+    <div
+      class="container w-3/6 mx-auto rounded-lg bg-white shadow-md shadow-orange-500 py-2 mb-4 px-1 hover:shadow-amber-400"
+    >
+      <h1 class="text-center font-bold text-9xl pt-3 pb-2">
+        {{ event.name }}
+      </h1>
+      <div class="pb-2">
+        <h3 class="mx-auto text-center">
+          <mat-icon>room</mat-icon>
+          {{ event.location }} , {{ event.province }}
+        </h3>
+      </div>
+      <div class="text-center mb-3">
+        {{ event.raceDate | date }}
+      </div>
+    </div>
+
+    <div
+      class="container w-3/5 mx-auto bg-white rounded-lg shadow-lg py-2 mb-20 px-3"
+    >
+      <div class="ml-2 text-bold text-2xl">Available Races</div>
+      <div
+        class="flex mx-auto rounded-xl h-24 items-center justify-center"
+        *ngFor="let el of event.raceTypeList; let i = index"
+        [ngClass]="i % 2 === 0 ? 'even' : 'odd'"
+      >
+        <div
+          class="flex-auto text-lg w-64 py-4 mr-2 left text-left pl-11 shadow-md shadow-gray-800"
+        >
+          Distance: {{ el.distance }}
+        </div>
+        <div
+          class="flex-auto w-6 text-center py-4 right border-2 border-[#FA9533] rounded-sm font-semibold text-lg"
+        >
+          {{ el.price }} Bath
+        </div>
+      </div>
+
+      <div
+        class="grid grid-cols-2 grid-rows-1 w-auto mx-auto pt-1 race-info text-center"
+      >
+        <button
+          routerLink="buy-ticket"
+          class="bg-orange-500 shadow-inner hover:bg-orange-600 p-2 rounded-2xl font-semibold buy-ticket-btn"
+        >
+          Buy Ticket
+        </button>
+        <div class="mr-5 mt-2">
+          <h2 class="font-medium open-close-regis">
+            Open registration : {{ event.openRegisDate | date : "MM-yyyy-dd" }}
+          </h2>
+          <h2 class="font-medium open-close-regis">
+            Close registration :
+            {{ event.closeRegisDate | date : "MM-yyyy-dd" }}
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #errorLoad>
+    <div class="flex justify-center items-center h-screen">
+      <div class="container w-3/6 bg-white rounded-lg shadow-2xl py-7 px-4">
+        <div class="text-center text-2xl">
+          Sorry The Event you are trying to access is not exist!!!
+        </div>
+        <div class="text-center font-light mt-1">
+          You will be directed to home page after 5 seconds!
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

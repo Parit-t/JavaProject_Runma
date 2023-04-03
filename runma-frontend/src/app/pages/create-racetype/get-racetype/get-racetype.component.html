@@ -1,0 +1,31 @@
+<div>
+  <div *ngIf="theRaceType.length > 0">
+    <div
+      *ngFor="let raceType of theRaceType"
+      class="flex justify-center items-center"
+    >
+      <div
+        class="w-2/3 flex-col bg-white shadow-md rounded-md overflow-hidden my-3"
+      >
+        <div class="tabOnTop text-orange-600 text-lg px-6 pt-4">
+          <div class="row d-flex align-items-center justify-content-center">
+            <h5 class="text-white col-4 text-center">EVENT NAME</h5>
+            <h2 class="col-8 text-lg font-bold">
+              {{ raceType.name }}
+            </h2>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center px-6 py-4">
+          <div
+            class="bg-orange-600 text-md uppercase px-2 py-1 rounded-full border border-gray-200 text-gray-200 font-bold"
+          >
+          💸 :  {{ raceType.price }} 
+          </div>
+          <div class="text-sm text-md font-bold">🏃‍♀️ : {{ raceType.distance }} KM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="theRaceType.length === 0">Loading...</div>
+</div>

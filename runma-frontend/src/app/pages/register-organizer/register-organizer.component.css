@@ -1,0 +1,39 @@
+.custom-input {
+  @apply appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-orange focus:border-orange focus:z-10 sm:text-sm;
+}
+
+.custom-button {
+  @apply bg-orange hover:bg-amber-500 text-white font-bold py-2 px-4 rounded focus:outline-none;
+}
+
+.custom-label {
+  @apply block font-bold mb-2 text-gray-700;
+}
+
+.disabled-button {
+  @apply bg-gray-500 hover:bg-gray-500 text-cream font-bold py-2 px-4 rounded focus:outline-none;
+}
+
+.disabled-button1 {
+  background-color: gray;
+  color: cream;
+  cursor: not-allowed;
+}
+
+.alert {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.alert-danger {
+  background-color: #f2dede;
+  color: #a94442;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+

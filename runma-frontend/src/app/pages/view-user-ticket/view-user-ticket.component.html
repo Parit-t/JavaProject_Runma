@@ -1,0 +1,39 @@
+<ng-container *ngIf="ticketList.length > 0; else noTickets">
+    <div class=" border-2 rounded-lg z-50 border-solid border-neutral-900 shadow-lg shadow-slate-700 m-8 ">
+      <h1 class="tracking-wide pl-4 py-2 rounded-t-md bg-slate-600 text-3xl text-yellow-100 font-bold uppercase border-b-2 border-slate-400">Your Run History !!</h1>
+      <ng-container *ngFor="let status of statusList,let i = index"> 
+        <div class="bg-cyan-50 rounded-md">
+          <button class="min-w-full border-y-2 px-5 border-solid border-y-gray-600 bg-orange-500 hover:bg-orange-600 active:bg-orange-500 flex justify-between items-center " type="button" 
+          (click)="toggleAccordion(i)" >
+            <h2 class="accordion-header text-2xl p-1 tracking-wider uppercase font-bold" >
+              {{ status }}
+            </h2>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="h-6 w-6 ">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <div class="pt-3 pb-5 px-3 " [class.hidden]="!toggleStatus[i]"  [class.block]="toggleStatus[i]" >
+            <div class="flex items-center justify-between">
+              <ng-container *ngFor="let ticket of ticketGroup[status]">
+                  <view-user-ticket-card [ticket]="ticket"></view-user-ticket-card>
+                <!-- <view-user-ticket-card ></view-user-ticket-card> -->
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+  
+  <ng-template #noTickets>
+    <view-ticket-notfound></view-ticket-notfound>
+  </ng-template>

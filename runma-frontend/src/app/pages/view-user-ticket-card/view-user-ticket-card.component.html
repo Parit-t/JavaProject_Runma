@@ -1,0 +1,28 @@
+<div class="w-80 rounded border-solid border-2 border-stone-700 shadow-black shadow-sm mx-5 bg-white">
+    <div id="title" class="bg-orange-500 border-b-2 border-zinc-500 p-2 truncate">
+        <h2 class="font-bold uppercase tracking-wide text-lg">{{ticket.raceType.event.name}}</h2>
+    </div>
+    <div class="flex justify-between p-2 border-b-2 border-zinc-300">
+        <div class="text-xs text-start text-zinc-400">{{ticket.raceType.name}} : {{ticket.raceType.distance}}</div>
+        <div class="text-xs text-end  uppercase" 
+        [ngClass]="{
+            'text-red-600':ticket.status==='unpaid',
+            'text-green-900':ticket.status==='paid'}"
+            >{{ticket.status}}</div>
+    </div>
+    <div id="description" class="border-solid border-b-2 border-zinc-300 p-2 pt-1">
+        <div class="text-md text-zinc-800">Price : {{ticket.raceType.price}}</div>
+        <div class="text-sm text-zinc-800">Location : {{ticket.raceType.event.location}}</div>
+        <div class="text-sm text-zinc-800">City : {{ticket.raceType.event.province}}</div>
+    </div>
+    <div id="buttomCard" class="flex justify-between items-center p-2" >
+        <div class="justify-start text-sm">{{ticket.createDate}}</div>
+        <div *ngIf="ticket.status === 'unpaid'">
+            <button class="justify-end bg-red-600 hover:bg-red-700 focus:outline-none focus:ring focus:ring-violet-300 active:bg-red-600 text-amber-50 rounded p-1 shadow-black shadow-sm">Payhere</button>
+        </div>
+        <div *ngIf="ticket.status !== 'unpaid'">
+            <div class="justify-start text-sm text-emerald-800">{{ticket.paidDate}}</div>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,110 @@
+<!-- <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()"> -->
+<div class="grid md:grid-cols-2 h-screen">
+  <div
+    class="bg-gradient-to-r from-orange to to-cream md:flex hidden flex flex-col"
+  >
+    <a class="text-cream font-bold mt-20 pl-20 text-base" routerLink="/"
+      >กลับสู่หน้าหลัก</a
+    >
+    <div class="mx-auto my-auto">
+      <img
+        class="object-center"
+        src="/assets/img/logo-runner-organizer.svg"
+        alt="Logo"
+      />
+      <div
+        class="font-extrabold text-7xl text-cream text-center mt-4 drop-shadow-xl"
+      >
+        RUNMA
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-cream xl:px-16">
+    <div class="p-20">
+      <div class="font-extrabold text-4xl text-gray-900 pb-5">
+        สมัครสมาชิกองค์กรผู้จัดงาน
+      </div>
+      <div>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div class="mb-4">
+            <label class="custom-label" for="name">ชื่อองค์กรผู้จัดงาน *</label>
+            <input
+              class="custom-input"
+              id="name"
+              type="text"
+              formControlName="name"
+              placeholder="Enter organizer name"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="custom-label" for="contact">อีเมล *</label>
+            <input
+              class="custom-input"
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="Enter email information"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="custom-label" for="contact">เบอร์โทร *</label>
+            <input
+              class="custom-input"
+              id="contact"
+              type="text"
+              formControlName="contact"
+              placeholder="Enter contact information"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="custom-label" for="contact">เว็บไซต์</label>
+            <input
+              class="custom-input"
+              id="website"
+              type="text"
+              formControlName="website"
+              placeholder="Enter website information"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="custom-label" for="contact">เฟซบุ๊ก</label>
+            <input
+              class="custom-input"
+              id="facebook"
+              type="text"
+              formControlName="facebook"
+              placeholder="Enter facebook information"
+            />
+          </div>
+          <div>
+            <!-- <div>ถ้ามี</div> -->
+            <div class="flex items-center justify-end">
+              <button
+                class="custom-button"
+                type="submit"
+                [disabled]="registrationForm.invalid"
+                [ngClass]="{ 'disabled-button': registrationForm.invalid }"
+              >
+                สมัครสมาชิก
+              </button>
+            </div>
+          </div>
+        </form>
+        <a class="custom-label text-center pt-2">
+          ถ้ามีบัญชีอยู่แล้ว คลิ๊กเพื่อเข้าสู่ระบบ
+        </a>
+      </div>
+    </div>
+    <div
+      *ngIf="alertMessage"
+      [ngClass]="{
+        alert: true,
+        'alert-danger': !checkRegister,
+        'alert-success': checkRegister
+      }"
+    >
+      {{ alertMessage }}
+    </div>
+  </div>
+</div>

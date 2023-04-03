@@ -1,0 +1,172 @@
+<div class="min-h-screen bg-[#151a33] flex">
+  <!-- <div class="row m-0 p-0 bg-[#232946]"> -->
+  <div class="leftside col flex flex-col p-5 m-5 bg-white rounded-md h-min">
+    <div class="text-amber-600 font-bold text-3xl pb-3">CREATE EVENT</div>
+
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmitEvent()">
+      <div class="flex flex-col mb-2">
+        <div class="form-group">
+          <label for="name" class="text-[#232946] font-bold">EVENT NAME</label>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            class="form-control"
+          />
+        </div>
+        <div class="form-text text-danger" role="alert">
+          {{
+            eventForm.get("name")?.touched &&
+            eventForm.get("name")?.hasError("required")
+              ? "Event name is required"
+              : ""
+          }}
+        </div>
+      </div>
+
+      <div class="flex flex-col mb-2">
+        <div class="form-group">
+          <label for="raceDate" class="text-[#232946] font-bold"
+            >RACE DATE</label
+          >
+          <input
+            id="raceDate"
+            type="date"
+            formControlName="raceDate"
+            class="form-control"
+          />
+        </div>
+        <div class="form-text text-danger" role="alert">
+          {{
+            eventForm.get("raceDate")?.touched &&
+            eventForm.get("raceDate")?.hasError("required")
+              ? "Race date is required"
+              : ""
+          }}
+        </div>
+      </div>
+
+      <div class="flex flex-col mb-2">
+        <div class="form-group">
+          <label for="openRegisDate" class="text-[#232946] font-bold"
+            >OPEN REGISTER DATE</label
+          >
+          <input
+            id="openRegisDate"
+            type="date"
+            formControlName="openRegisDate"
+            class="form-control"
+          />
+        </div>
+        <div class="form-text text-danger" role="alert">
+          {{
+            eventForm.get("openRegisDate")?.touched &&
+            eventForm.get("openRegisDate")?.hasError("required")
+              ? "Open register date is required"
+              : ""
+          }}
+        </div>
+      </div>
+
+      <div class="flex flex-col mb-2">
+        <div class="form-group">
+          <label for="closeRegisDate" class="text-[#232946] font-bold"
+            >CLOSE REGISTER DATE</label
+          >
+          <input
+            id="closeRegisDate"
+            type="date"
+            formControlName="closeRegisDate"
+            class="form-control"
+          />
+        </div>
+        <div class="form-text text-danger" role="alert">
+          {{
+            eventForm.get("closeRegisDate")?.touched &&
+            eventForm.get("closeRegisDate")?.hasError("required")
+              ? "Close register date is required"
+              : ""
+          }}
+        </div>
+        <!-- <div class="form-text text-danger" role="alert" *ngIf="">
+            nooooooooooo
+          </div> -->
+      </div>
+
+      <div class="flex flex-col mb-2">
+        <div class="form-group">
+          <label for="location" class="text-[#232946] font-bold"
+            >LOCATION</label
+          >
+          <input
+            id="location"
+            type="text"
+            formControlName="location"
+            class="form-control"
+          />
+        </div>
+        <div class="form-text text-danger" role="alert">
+          {{
+            eventForm.get("location")?.touched &&
+            eventForm.get("location")?.hasError("required")
+              ? "Location is required"
+              : ""
+          }}
+        </div>
+      </div>
+
+      <div class="flex flex-col mb-2">
+        <div class="form-group">
+          <label for="province" class="text-[#232946] font-bold"
+            >PROVINCE</label
+          >
+          <input
+            id="province"
+            type="text"
+            formControlName="province"
+            class="form-control"
+          />
+        </div>
+        <div class="form-text text-danger" role="alert">
+          {{
+            eventForm.get("province")?.touched &&
+            eventForm.get("province")?.hasError("required")
+              ? "Province is required"
+              : ""
+          }}
+        </div>
+      </div>
+
+      <div class="flex flex-col mb-2">
+        <div class="form-group">
+          <label for="capacity" class="font-bold">CAPACITY</label>
+          <input
+            id="capacity"
+            type="number"
+            formControlName="capacity"
+            class="form-control"
+            min="0"
+          />
+        </div>
+        <div class="form-text text-danger" role="alert">
+          {{
+            eventForm.get("capacity")?.touched &&
+            eventForm.get("capacity")?.hasError("required")
+              ? "Capacity is required"
+              : ""
+          }}
+        </div>
+      </div>
+
+      <button
+        class="btn btn-primary my-2 w-full"
+        [disabled]="eventForm.invalid"
+      >
+        Create
+      </button>
+    </form>
+    <button class="btn btn-secondary w-full mb-2">Cancel</button>
+  </div>
+  <div class="rightside col p-0 max-h-full"></div>
+  <!-- </div> -->
+</div>

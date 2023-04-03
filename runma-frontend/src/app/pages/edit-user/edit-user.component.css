@@ -1,0 +1,31 @@
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: #f07731 !important;
+  border-color: white;
+}
+
+.btn-primary:hover {
+  background-color: #df5a0d !important;
+  border-color: white;
+}
+
+.btn-secondary,
+.btn-secondary:active,
+.btn-secondary:visited {
+  background-color: #f8e3d6 !important;
+  border-color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #e9d0c1 !important;
+  border-color: white;
+}
+
+.leftpic {
+  background-image: url("../../../assets/img/vectorRun.png");
+  background-size: 80% 40%;
+  /* background-position: fit; */
+  background-repeat: no-repeat;
+  background-position: center;
+}

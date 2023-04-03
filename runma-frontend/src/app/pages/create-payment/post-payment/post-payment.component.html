@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+      <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label class="form-label"> BANK NAME </label>
+          <input type="text" class="form-control" formControlName="bankName" />
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label"> Date of Transfer </label>
+          <input type="date" class="form-control" formControlName="paidDate" />
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label"> Amount</label>
+          <input type="number" class="form-control" formControlName="amount" />
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label"> Proof of Payment (Please attach file)</label>
+          <input type="file" class="form-control" formControlName="imageProof" />
+        </div>
+  
+        <div class="d-grid gap-2">
+          <button
+            type="submit"
+            [disabled]="!paymentForm.valid"
+            class="btn btn-warning bg-orange-400 hover:bg-orange-600 disabled:bg-orange-200"
+          >
+            <span class="text-base font-medium">Make payment</span>
+          </button>
+          <button
+            type="reset"
+            class="btn btn-outline-warning hover:bg-orange-200"
+          >
+            <span class="text-base font-medium">Cancel</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

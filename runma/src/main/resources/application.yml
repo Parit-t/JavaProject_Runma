@@ -1,0 +1,30 @@
+#spring:
+#  h2:
+#    console:
+#      enabled: true
+#  datasource:
+#    url: jdbc:h2:file:./data/runma
+#    driverClassName: org.h2.Driver
+#    username: sa
+#    password: password
+#  jpa:
+#    show-sql: false
+#    hibernate:
+#      ddl-auto: update
+#      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+#
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo?useSSL=false
+    username: root
+    password: usbw
+  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+
+server:
+  error:
+    include-message: always

@@ -1,0 +1,47 @@
+<!-- <p>searchbar works!</p> -->
+<form [formGroup]="searchbarForm" (ngSubmit)="onSubmit()" >
+    <div class="searchBoxUpper">
+        <div class="searchBox-box1">
+            <label for="eventname" id="eventnamelabel"  style ="font-size: 18px;font-family: Roboto;color: #FFFFFF;" >EVENTNAME</label><br>
+            <input type="text" id="eventname" name="eventname" value="ค้นหาด้วยชื่องาน" formControlName="name"><br>
+        </div>
+        <div class="searchBox-box2">
+            <label for="province" id="provincelabel" style ="font-size: 18px;font-family: Roboto;color: #FFFFFF;" >PROVINCE</label><br>
+            <!-- <input  type="text" id="province" name="province" value="ค้นหาด้วยจังหวัด" formControlName="province" ><br> -->
+            <input  style ="color: red;"type="text" id="province" name="province" value="ค้นหาด้วยจังหวัด" formControlName="province" [readonly]="true" placeholder="ON COMING" ><br>
+
+        </div>
+        <div class="searchBox-box3" >
+            <!-- <label for="distance">ระยะทาง:</label><br>
+            <input type="text" id="distance" name="distance" value="ค้นหาด้วยระยะทาง"><br> -->
+
+            <label for="distance" id="distancelabel" style ="font-size: 18px;font-family: Roboto;color: #FFFFFF;">DISTANCE</label>
+            <select name="distance" id="distance" formControlName="distance" placeholder="placeholder_text" style ="color: red;">
+                <option value="" selected data-default style ="color: red;">ON COMING</option>
+              <option value="1-9"  disabled="disabled" placeholder="placeholder_text" >1-9 KM.</option>
+              <option value="10-20" disabled="disabled">10-20 KM.</option>
+              <option value="21-41" disabled="disabled">21-41 KM.</option>
+              <option value="42" disabled="disabled">42 KM.</option>
+            </select>
+        </div>
+            <div class="searchBox-box4">
+                <input type="image" id="searchbutton" src="../../../assets/img/gablearrow.png" >
+                <!-- <button  id="searchbutton" type="submit"  >Search</button> -->
+                <button id="clearsearchbutton"  (click)="clearData()">Clear Search</button>
+            </div>
+
+            <!-- <img src="../../../assets/img/gablearrow.png" /> -->
+        
+    </div>
+   
+</form>
+
+<!-- <p>{{searchbarForm.value | json}}</p> -->
+<!-- property binding -->
+<!-- <p>{{data}}</p> -->
+<!-- <h1>HEllo</h1> -->
+<!-- <psuiresultcomponent><psuiresultcomponent/> -->
+<searchresultcomponent [datafromsearchbar] ="data"><searchresultcomponent/>
+    
+
+<!-- <psuiresultcomponent [datafromsearchbar] ="data" ><psuiresultcomponent/>/ -->

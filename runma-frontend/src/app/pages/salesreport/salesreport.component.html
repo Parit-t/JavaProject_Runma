@@ -1,0 +1,77 @@
+<ng-container *ngIf="contentLoaded; else errorLoad">
+    <!-- Content to display when it loads successfully -->
+    <div class="content event-info" role="heading">
+        <div class="container flex flex-col sm:flex-row items-center justify-between">
+            <div class="event-location-info items-center columns-1 mb-4">
+                <div class="">
+                    <p class="text-5xl font-bold justify-center mb-2">
+                        {{ events.name }}
+                    </p>
+                    <span class="location-info">
+                        <mat-icon>room</mat-icon>
+                        <p class="font-base pt-3">{{ events.location }}</p>
+                    </span>
+                </div>
+            </div>
+    
+            <div class="total-ticket flex bg-[#FCEBE2] rounded">
+                <div class="ticket-sales-box px-40">
+                    <div class="text-xl text-center font-medium text-gray-800">
+                        Total {{ events.totalSales }} tickets
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <body class="content racetype-info">
+        
+        <div class="container">
+
+            <div  *ngIf="showRaceTitle; else noRaceTitle" class="race-title">Race Type</div>
+            <ng-template #noRaceTitle >
+            <div class="alert alert-danger" > "There are no Race type to show here" </div>
+    </ng-template>
+            <div class="flex flex-col sm:flex-row my-4 justify-center" *ngFor="let detail of events.raceTypeList">
+                <div class="flex-auto col w-full bg-[#27295D] text-base p-4 rounded">
+                    <div>
+                        <span class="font-base text-[#FA9533]">{{ detail.name }} {{ detail.distance }} kilometers</span>
+                    </div>
+                    <div class="flex flex-row justify-between">
+                        <div class="font-light text-white">{{ detail.price }} Baht</div>
+                        <div class="font-medium text-white">
+                            Total {{ detail.price * detail.sales }} Baht
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="flex w-full text-base border-2 border-[#FA9533] rounded justify-center items-center">
+                    <div>
+                        <span class="font-medium text-gray-700">sold {{ detail.sales }} tickets</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <button type="button"
+                        (click) = "onCancel()"
+                        class= "back"
+                >BACK
+        </button>
+    </body>
+
+  </ng-container>
+  
+  <ng-template #errorLoad>
+    <div class="alert alert-danger">
+        "Sorry, we couldn't load the content because there are no events to show here."
+
+    </div>
+    <button type="button"
+                        (click) = "onCancel()"
+                        class= "back"
+                >BACK
+        </button>
+  </ng-template>
+

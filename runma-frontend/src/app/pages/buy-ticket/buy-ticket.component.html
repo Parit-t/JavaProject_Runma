@@ -1,0 +1,82 @@
+<div *ngIf="eventData$ | async as eventData; else errorLoad">
+  <div class="content">
+    <h1 class="text-center font-bold text-7xl py-10">{{ eventData.name }}</h1>
+    <div class="container w-3/4 mx-auto">
+      <form
+        [formGroup]="ticketForm"
+        (ngSubmit)="createTicket()"
+        class="mx-auto"
+      >
+        <div class="bg-yellow-400 rounded-lg shadow-lg p-6 w-1/2 mx-auto">
+          <img
+            src="assets/img/chander-r-z4WH11FMfIQ-unsplash.jpg"
+            alt="Card image"
+            class="w-32 h-32 rounded-full mx-auto mb-4"
+          />
+          <h2 class="text-xl font-bold mb-2">Ticket Confirmation</h2>
+          <div class="flex py-2">
+            <p class="flex-auto font-medium">Shirt Size</p>
+            <p class="flex-auto font-medium">Distance:Km</p>
+          </div>
+          <div class="flex">
+            <select
+              formControlName="shirtSize"
+              class="flex-auto p-2 bg-white shadow-lg form-select form-select-md mb-3"
+            >
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+            <select
+              formControlName="raceTypeId"
+              class="flex-auto p-2 form-select bg-white shadow-lg ml-2 form-select-md mb-3"
+            >
+              <option disabled selected value="0">Choose an option</option>
+              <option
+                *ngFor="let dist of eventData.raceTypeList"
+                [value]="dist.id"
+              >
+                {{ dist.distance }}
+              </option>
+            </select>
+          </div>
+
+          <div>
+            <button
+              [disabled]="!ticketForm.get('raceTypeId')?.value"
+              class="mx-auto shadow-lg {{
+                ticketForm.get('raceTypeId')?.value == '0'
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-green-500 hover:bg-blue-700'
+              }} text-white font-bold py-2 px-4 rounded"
+            >
+              Buy Ticket
+            </button>
+            <button
+              type="button"
+              class="ml-5 shadow-lg bg-red-400 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+              (click)="goBack()"
+            >
+              Go Back
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div>{{ ticketForm.value | json }}</div>
+  </div>
+</div>
+
+<ng-template #errorLoad>
+  <div class="flex justify-center items-center h-screen">
+    <div class="container w-3/6 bg-white rounded-lg shadow-2xl py-7 px-4">
+      <div class="text-center text-2xl">
+        Sorry The Event you are trying to access is not exist!!!
+      </div>
+      <div class="text-center font-light mt-1">
+        You will be directed to home page after 5 seconds!
+      </div>
+    </div>
+  </div>
+</ng-template>

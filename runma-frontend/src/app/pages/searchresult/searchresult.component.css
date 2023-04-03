@@ -1,0 +1,36 @@
+.searchResultContainer {
+    /* display: flex;
+    align-items: center;
+    flex-direction: column; */
+    width: 1080px;
+}
+
+.searchResultHeading {
+    width: 1080px;
+
+    text-align: center;
+
+}
+
+.searchResultCardContainer {
+
+    width: 1080px;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+
+}
+
+.searchResultCard1 {
+    width: 325px;
+    height: 350px;
+}
+
+.searchResultCard1img {
+    width: 325px;
+    height: 150 px;
+
+
+}

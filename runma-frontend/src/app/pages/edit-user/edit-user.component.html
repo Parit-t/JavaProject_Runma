@@ -1,0 +1,297 @@
+<!-- If there is 404 error message, do not show the edit account form -->
+<div
+  class="alert alert-danger font-bold text-xl text-center"
+  role="alert"
+  *ngIf="errorStatus == '404'"
+>
+  {{ errorMessage + " !" }}
+</div>
+
+<div class="row bg-[#EEE2CB]" *ngIf="errorStatus != '404'">
+  <div class="leftpic col-lg-3 bg-[#232946]">Left</div>
+  <div class="form-container flex flex-col px-5 pb-2 bg-white col-lg-9">
+    <div class="flex mt-8 mb-1 items-center px-4">
+      <div class="title text-[#232946] text-4xl font-bold">Edit Account</div>
+      <div class="text-2xl font-semibold mx-3 text-orange-600">
+        : {{ userName }}
+      </div>
+    </div>
+
+    <form #editUserForm="ngForm">
+      <!-- personal information -->
+      <div class="form-group flex flex-col shadow-md p-4">
+        <div class="text-orange-600 font-semibold text-lg pb-2">
+          Personal Information
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-lable font-bold">First Name *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              required
+              [(ngModel)]="user.fname"
+              #name="ngModel"
+            />
+            <div
+              *ngIf="name.errors?.['required']"
+              class="form-text text-danger"
+              role="alert"
+            >
+              First name is required.
+            </div>
+          </div>
+          <!-- <h2>{{ user | json }}</h2> -->
+          <!-- <div *ngIf="name.errors?.['required']">Name is required.</div>
+          <div *ngIf="name.errors?.['minlength']">First Name cannot less than 10 characters</div> -->
+          <div class="col">
+            <label class="form-lable font-bold">Last Name *</label>
+            <input
+              type="text"
+              id="lname"
+              name="lname"
+              class="form-control"
+              required
+              [(ngModel)]="user.lname"
+              #lname="ngModel"
+            />
+            <div
+              *ngIf="lname.errors?.['required']"
+              class="form-text text-danger"
+              role="alert"
+            >
+              Last name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="flex row">
+          <div class="col">
+            <label class="form-lable font-bold pt-2">Gender</label>
+            <select
+              class="form-select form-control"
+              id="gender"
+              name="gender"
+              aria-label="Gender"
+              [(ngModel)]="user.gender"
+            >
+              <option selected [value]="user.gender">{{ user.gender }}</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+
+          <div class="col">
+            <label class="form-lable font-bold pt-2">Day of birth</label>
+            <input
+              class="form-control"
+              type="date"
+              [(ngModel)]="user.birthDate"
+              name="birthdate"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- contact information -->
+      <div class="form-group flex flex-col shadow-md p-4">
+        <div class="text-orange-600 text-lg font-semibold py-1">
+          Contact Information
+        </div>
+        <div>
+          <label class="form-lable font-bold">Email *</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            required
+            minlength="6"
+            [(ngModel)]="user.email"
+            #theemail="ngModel"
+            email="true"
+          />
+
+          <div
+            *ngIf="theemail.errors?.['email']"
+            class="form-text text-danger"
+            role="alert"
+          >
+            Email is invalid.
+          </div>
+          <div
+            *ngIf="theemail.errors?.['required']"
+            class="form-text text-danger"
+            role="alert"
+          >
+            Email is required.
+          </div>
+        </div>
+
+        <div>
+          <label class="form-lable font-bold pt-2">Address</label>
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="user.address"
+            name="address"
+          />
+        </div>
+
+        <div class="flex row">
+          <div class="col">
+            <label class="form-lable font-bold pt-2">Sub-district</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="user.subDistrict"
+              name="subdistrict"
+            />
+          </div>
+
+          <div class="col">
+            <label class="form-lable font-bold pt-2">District</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="user.district"
+              name="district"
+            />
+          </div>
+        </div>
+
+        <div class="flex row">
+          <div class="col">
+            <label class="form-lable font-bold pt-2">Province</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="user.province"
+              name="province"
+            />
+          </div>
+
+          <div class="col">
+            <label class="form-lable font-bold pt-2">Country</label>
+            <input
+              class="form-control"
+              [(ngModel)]="user.country"
+              name="country"
+            />
+          </div>
+        </div>
+
+        <div class="flex row">
+          <div class="col">
+            <label class="form-lable font-bold pt-2">Postal code</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="user.postalCode"
+              name="postalCode"
+            />
+          </div>
+
+          <div class="col">
+            <label class="form-lable font-bold pt-2">Phone number *</label>
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              class="form-control"
+              required
+              [(ngModel)]="user.phone"
+              #phone="ngModel"
+              pattern="[- +()0-9]{9,12}"
+            />
+            <div
+              *ngIf="phone.errors?.['pattern']"
+              class="form-text text-danger"
+              role="alert"
+            >
+              Phone number is invalid
+            </div>
+            <div
+              *ngIf="phone.errors?.['required']"
+              class="form-text text-danger"
+              role="alert"
+            >
+              Phone number is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- password -->
+      <div class="form-group shadow-md p-4 mb-2">
+        <div class="text-orange-600 text-lg font-semibold py-1">
+          Want to change password ?
+        </div>
+        <div class="flex row">
+          <div class="col">
+            <label class="form-lable font-bold">Password *</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              required
+              minlength="6"
+              [(ngModel)]="user.password"
+              #password="ngModel"
+            />
+            <div
+              *ngIf="password.errors?.['required']"
+              class="form-text text-danger"
+              role="alert"
+            >
+              Password is required.
+            </div>
+            <div
+              *ngIf="password.errors?.['minlength']"
+              class="form-text text-danger"
+              role="alert"
+            >
+              Password must be at least 6 characters long.
+            </div>
+          </div>
+
+          <div class="col">
+            <label class="form-lable font-bold">Confirm Password *</label>
+            <input
+              type="password"
+              id="cpassword"
+              name="cpassword"
+              class="form-control"
+              required
+              minlength="6"
+              [ngModel]="passwordConfirm"
+              #cPassword="ngModel"
+            />
+            <div
+              *ngIf="cPassword.value != password.value"
+              class="form-text text-danger"
+              role="alert"
+            >
+              Password is not matched.
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="row my-3 content-around">
+      <button
+        class="btn btn-primary mx-2 px-5 col text-white"
+        [disabled]="editUserForm.form.invalid"
+        [disabled]="cPassword.value != password.value"
+        (click)="onSubmit()"
+      >
+        SAVE
+      </button>
+      <button class="btn btn-secondary mx-2 px-5 col text-white">CANCEL</button>
+    </div>
+  </div>
+</div>
